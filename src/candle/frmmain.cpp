@@ -29,8 +29,7 @@
 #include <QAction>
 #include <QLayout>
 #include <QMimeData>
-#include <QDrag>
-#include <QTranslator>
+#include <QtWidgets>
 #include "frmmain.h"
 #include "ui_frmmain.h"
 #include "ui_frmsettings.h"
