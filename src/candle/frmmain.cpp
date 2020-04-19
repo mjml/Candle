@@ -138,6 +138,7 @@ frmMain::frmMain(QWidget *parent) :
 //    ui->scrollArea->updateMinimumWidth();
 
     m_heightMapMode = false;
+    m_probeOrigin = false;
     m_lastDrawnLineIndex = 0;
     m_fileProcessedCommandIndex = 0;
     m_cellChanged = false;
@@ -875,6 +876,7 @@ void frmMain::updateControlsState() {
 
     ui->tblHeightMap->setVisible(m_heightMapMode);
     ui->tblProgram->setVisible(!m_heightMapMode);
+    ui->chkProbeOrigin->setVisible(m_heightMapMode);
 
     ui->widgetHeightMap->setEnabled(!m_processingFile && m_programModel.rowCount() > 1);
     ui->cmdHeightMapMode->setEnabled(!ui->txtHeightMap->text().isEmpty());
@@ -1383,23 +1385,25 @@ void frmMain::onSerialPortReadyRead()
                         }
 
                         static double firstZ;
-                        if (m_probeIndex == -1) {
+                        if ((m_probeOrigin && m_probeIndex == -1) ||
+                            (!m_probeOrigin && m_probeIndex == 0)) {
                             firstZ = z;
                             z = 0;
                         } else {
                             // Calculate delta Z
                             z -= firstZ;
-
-                            // Calculate table indexes
-                            int row = (m_probeIndex / m_heightMapModel.columnCount());
-                            int column = m_probeIndex - row * m_heightMapModel.columnCount();
-                            if (row % 2) column = m_heightMapModel.columnCount() - 1 - column;
-
-                            // Store Z in table
-                            m_heightMapModel.setData(m_heightMapModel.index(row, column), z, Qt::UserRole);
-                            ui->tblHeightMap->update(m_heightMapModel.index(m_heightMapModel.rowCount() - 1 - row, column));
-                            updateHeightMapInterpolationDrawer();
                         }
+
+                        // Calculate table indexes
+                        int row = trunc(m_probeIndex / m_heightMapModel.columnCount());
+                        int column = m_probeIndex - row * m_heightMapModel.columnCount();
+                        if (row % 2) column = m_heightMapModel.columnCount() - 1 - column;
+
+                        // Store Z in table
+                        m_heightMapModel.setData(m_heightMapModel.index(row, column), z, Qt::UserRole);
+                        ui->tblHeightMap->update(m_heightMapModel.index(m_heightMapModel.rowCount() - 1 - row, column));
+                        updateHeightMapInterpolationDrawer();
+
 
                         m_probeIndex++;
                     }
@@ -2706,7 +2710,11 @@ void frmMain::on_cmdFileReset_clicked()
     m_fileCommandIndex = 0;
     m_fileProcessedCommandIndex = 0;
     m_lastDrawnLineIndex = 0;
-    m_probeIndex = -1;
+    if (m_probeOrigin) {
+      m_probeIndex = -1;
+    } else {
+      m_probeIndex = 0;
+    }
 
     if (!m_heightMapMode) {
         QList<LineSegment*> list = m_viewParser.getLineSegmentList();
@@ -3264,11 +3272,14 @@ bool frmMain::updateHeightMapGrid()
 
     m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G21G90F%1G0Z%2").
                          arg(m_settings->heightmapProbingFeed()).arg(ui->txtHeightMapGridZTop->value()));
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X0Y0"));
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
-                         .arg(ui->txtHeightMapGridZBottom->value()));
-    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
-                         .arg(ui->txtHeightMapGridZTop->value()));
+
+    if (m_probeOrigin) {
+      m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X0Y0"));
+      m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G38.2Z%1")
+                           .arg(ui->txtHeightMapGridZBottom->value()));
+      m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0Z%1")
+                           .arg(ui->txtHeightMapGridZTop->value()));
+    }
 
     double x, y;
 
@@ -3333,6 +3344,11 @@ void frmMain::updateHeightMapInterpolationDrawer(bool reset)
 
     // Reset heightmapped program model
     m_programHeightmapModel.clear();
+}
+
+void frmMain::on_chkProbeOrigin_stateChanged(int state)
+{
+  m_probeOrigin = (state == Qt::CheckState::Checked);
 }
 
 void frmMain::on_chkHeightMapBorderShow_toggled(bool checked)

@@ -181,6 +181,7 @@ private slots:
     void on_chkHeightMapUse_clicked(bool checked);
     void on_cmdHeightMapCreate_clicked();
     void on_cmdHeightMapBorderAuto_clicked();
+    void on_chkProbeOrigin_stateChanged(int state);
     void on_cmdFileAbort_clicked();
     void on_cmdSpindle_clicked(bool checked);   
     void on_mnuViewWindows_aboutToShow();
@@ -321,6 +322,7 @@ private:
 
     bool m_heightMapMode;
     bool m_cellChanged;
+    bool m_probeOrigin;
 
     // Indices
     int m_fileCommandIndex;
