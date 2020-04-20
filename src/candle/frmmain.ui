@@ -866,44 +866,6 @@ QLabel[overrided=&quot;false&quot;] {
                     </item>
                     <item>
                      <layout class="QGridLayout" name="gridLayout_4">
-                      <item row="0" column="0">
-                       <widget class="QLabel" name="label_12">
-                        <property name="text">
-                         <string>X:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QDoubleSpinBox" name="txtHeightMapGridX">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="locale">
-                         <locale language="C" country="AnyCountry"/>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::NoButtons</enum>
-                        </property>
-                        <property name="decimals">
-                         <number>0</number>
-                        </property>
-                        <property name="minimum">
-                         <double>2.000000000000000</double>
-                        </property>
-                        <property name="maximum">
-                         <double>1000.000000000000000</double>
-                        </property>
-                        <property name="value">
-                         <double>2.000000000000000</double>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="0" column="5">
                        <widget class="QDoubleSpinBox" name="txtHeightMapGridZTop">
                         <property name="sizePolicy">
@@ -929,34 +891,6 @@ QLabel[overrided=&quot;false&quot;] {
                         </property>
                         <property name="value">
                          <double>1.000000000000000</double>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="5">
-                       <widget class="QDoubleSpinBox" name="txtHeightMapGridZBottom">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="locale">
-                         <locale language="C" country="AnyCountry"/>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::NoButtons</enum>
-                        </property>
-                        <property name="minimum">
-                         <double>-999.000000000000000</double>
-                        </property>
-                        <property name="maximum">
-                         <double>999.000000000000000</double>
-                        </property>
-                        <property name="value">
-                         <double>-1.000000000000000</double>
                         </property>
                        </widget>
                       </item>
@@ -991,6 +925,79 @@ QLabel[overrided=&quot;false&quot;] {
                         </property>
                        </widget>
                       </item>
+                      <item row="0" column="3">
+                       <widget class="QLabel" name="label_14">
+                        <property name="text">
+                         <string>Zt:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="5">
+                       <widget class="QDoubleSpinBox" name="txtHeightMapGridZBottom">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="locale">
+                         <locale language="C" country="AnyCountry"/>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::NoButtons</enum>
+                        </property>
+                        <property name="minimum">
+                         <double>-999.000000000000000</double>
+                        </property>
+                        <property name="maximum">
+                         <double>999.000000000000000</double>
+                        </property>
+                        <property name="value">
+                         <double>-1.000000000000000</double>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="QDoubleSpinBox" name="txtHeightMapGridX">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="locale">
+                         <locale language="C" country="AnyCountry"/>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::NoButtons</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>0</number>
+                        </property>
+                        <property name="minimum">
+                         <double>2.000000000000000</double>
+                        </property>
+                        <property name="maximum">
+                         <double>1000.000000000000000</double>
+                        </property>
+                        <property name="value">
+                         <double>2.000000000000000</double>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="QLabel" name="label_12">
+                        <property name="text">
+                         <string>X:</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="1" column="3">
                        <widget class="QLabel" name="label_11">
                         <property name="text">
@@ -1002,13 +1009,6 @@ QLabel[overrided=&quot;false&quot;] {
                        <widget class="QLabel" name="label_13">
                         <property name="text">
                          <string>Y:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="3">
-                       <widget class="QLabel" name="label_14">
-                        <property name="text">
-                         <string>Zt:</string>
                         </property>
                        </widget>
                       </item>
@@ -1041,6 +1041,30 @@ QLabel[overrided=&quot;false&quot;] {
                       </item>
                      </layout>
                     </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_12">
+                      <item>
+                       <widget class="QCheckBox" name="chkProbeOrigin">
+                        <property name="text">
+                         <string>Probe origin for Z=0</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_3">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
                    </layout>
                   </item>
                   <item>
@@ -1061,15 +1085,8 @@ QLabel[overrided=&quot;false&quot;] {
                         </property>
                        </widget>
                       </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="label_18">
-                        <property name="text">
-                         <string>X:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QDoubleSpinBox" name="txtHeightMapInterpolationStepX">
+                      <item row="1" column="3">
+                       <widget class="QDoubleSpinBox" name="txtHeightMapInterpolationStepY">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                           <horstretch>0</horstretch>
@@ -1099,8 +1116,15 @@ QLabel[overrided=&quot;false&quot;] {
                         </property>
                        </widget>
                       </item>
-                      <item row="1" column="3">
-                       <widget class="QDoubleSpinBox" name="txtHeightMapInterpolationStepY">
+                      <item row="1" column="0">
+                       <widget class="QLabel" name="label_18">
+                        <property name="text">
+                         <string>X:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="QDoubleSpinBox" name="txtHeightMapInterpolationStepX">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                           <horstretch>0</horstretch>
@@ -1255,8 +1279,8 @@ QLabel[overrided=&quot;false&quot;] {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>320</width>
-          <height>897</height>
+          <width>253</width>
+          <height>856</height>
          </rect>
         </property>
         <property name="acceptDrops">
@@ -2659,6 +2683,9 @@ QLabel[overrided=&quot;false&quot;] {
        </layout>
       </widget>
      </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_11"/>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -2872,8 +2899,8 @@ padding-right: 8;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>320</width>
-          <height>106</height>
+          <width>253</width>
+          <height>120</height>
          </rect>
         </property>
         <property name="acceptDrops">
